@@ -27,8 +27,8 @@ object ForwardsChainingEngine {
             }
           }.flatten
           
-          runIterative(validConclusions ++: tail, newAcc ++ validConclusions, rules)
+          runIterative(tail :++ validConclusions, newAcc ++ validConclusions, rules)
           
     }
-    
+
 }
