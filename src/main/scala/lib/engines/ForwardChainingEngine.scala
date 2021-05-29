@@ -6,8 +6,8 @@ import lib.Unifier
 
 object ForwardsChainingEngine {
 
-  def runWithoutTarget(facts : List[Proposition], rules : Set[Rule]) : Set[Proposition] =
-    runIterative(facts, Set(), rules)
+  def runWithoutTarget(facts : Set[Proposition], rules : Set[Rule]) : Set[Proposition] =
+    runIterative(facts.toList, Set(), rules)
 
   @scala.annotation.tailrec
   private def runIterative(queue : List[Proposition], acc : Set[Proposition], rules : Set[Rule]) : Set[Proposition] = 
