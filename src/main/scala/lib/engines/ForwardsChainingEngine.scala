@@ -15,13 +15,14 @@ object ForwardsChainingEngine {
           else
             val validConclusions = {
               for {
-                rule <- rules
+                rule        <- rules
                 (cond, env) <- rule.dependsOn(fact)
-                envs <-  List(rule.satisifiedBy(acc + fact, env))
+                envs        <- Seq(rule.satisifiedBy(acc + fact, env))
               } yield {
                 envs.map(x => Unifier.substitute(rule.conclusion, x))
               }
             }.flatten
+            
             runIterative(validConclusions ++: tail, acc ++ validConclusions + fact)
             
       }
