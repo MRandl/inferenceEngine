@@ -2,7 +2,7 @@ package lib
 
 object Unifier {
 
-  private def substitute(pattern : Proposition, env : Environment) : Proposition = 
+  def substitute(pattern : Proposition, env : Environment) : Proposition = 
     pattern match {
       case va : Variable => 
         env.get(va)
