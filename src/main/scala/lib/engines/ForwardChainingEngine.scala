@@ -9,12 +9,12 @@ import scala.collection.immutable.Queue
 object ForwardsChainingEngine {
 
   def runWithoutTarget(facts : Set[Proposition], rules : Set[Rule]) : Set[Proposition] =
-    runIterative(facts.toList, Set(), rules)
+    runIterative(Queue() ++ facts, Set(), rules)
 
   @scala.annotation.tailrec
-  private def runIterative(queue : List[Proposition], acc : Set[Proposition], rules : Set[Rule]) : Set[Proposition] = 
+  private def runIterative(queue : Queue[Proposition], acc : Set[Proposition], rules : Set[Rule]) : Set[Proposition] = 
     queue match {
-      case fact :: tail =>
+      case fact +: tail =>
         
         if acc.contains(fact) then 
           runIterative(tail, acc, rules)
@@ -31,7 +31,7 @@ object ForwardsChainingEngine {
           }.flatten
           runIterative(tail ++ validConclusions, newAcc, rules)
           
-      case Nil => 
+      case _ => 
         acc
           
     }
