@@ -28,5 +28,6 @@ case class Constant(name : String) extends Atom
 case class Composite(name : String, on : List[Proposition]) extends Proposition:
   def head = on.head
   def body = on.tail
+  override def toString() = "(" + name + ", " + on.mkString(", ") + ")"
 
 
