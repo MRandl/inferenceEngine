@@ -25,8 +25,7 @@ object ForwardsChainingEngine {
               rule <- rules
               env  <- rule.dependsOn(fact) //check the current fact is relevant to the current rule
             } yield {
-              val en = rule.satisifiedBy(newAcc, env).map(x => Unifier.substitute(rule.conclusion, x))
-              en
+              rule.satisifiedBy(newAcc, env).map(x => Unifier.substitute(rule.conclusion, x))
             }
           }.flatten
           runIterative(tail ++ validConclusions, newAcc, rules)
