@@ -15,9 +15,9 @@ import lib.*
   
   println(
     lib.engines.ForwardsChainingEngine.runWithoutTarget(
-      Set(duckKnowsFish, fishKnowsAlien, duck, fish, alien), 
-      Set(knowsIsTransitive, knowsIsReflexive, knowsIsCommutative)
-    ).mkString("\n")
+      Set(duckKnowsFish, fishKnowsAlien), 
+      Set(knowsIsTransitive, knowsIsCommutative)
+    ).map(_.toString).toList.sorted.mkString("\n")
   )
   System.out.flush
 
