@@ -1,4 +1,4 @@
-package lib.engines
+package lib
 
 import lib.Proposition
 import lib.Rule

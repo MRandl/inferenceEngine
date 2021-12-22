@@ -10,7 +10,7 @@ import lib.*
   val lamaKnowsAlien = Composite("knows", List(Constant("lama"), Constant("alien")))
 
   println(
-    lib.engines.ForwardsChainingEngine.runWithoutTarget(
+    lib.ForwardsChainingEngine.runWithoutTarget(
       Set(duckKnowsFish, fishKnowsAlien, lamaKnowsAlien), 
       Set(knowsIsTransitive, knowsIsCommutative)
     ).map(_.toString).toList.sorted.mkString("\n")
